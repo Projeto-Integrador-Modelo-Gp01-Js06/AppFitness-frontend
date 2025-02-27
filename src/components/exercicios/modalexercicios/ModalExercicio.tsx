@@ -16,7 +16,7 @@ function ModalExercicio() {
                 modal
                 nested
             >
-                <div > {/* Adicionando scroll no conteúdo */}
+                <div >
                     {/* Adiciona o Formulário de exercício dentro do modal */}
                     <FormExercicio />
                 </div>
