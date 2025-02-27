@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import Exercicio from "../../models/Exercicio"
 import CardExercicios from "../cardprodutos/CardExercicios"
+import { listar } from "../../../services/Service"
+import { Oval } from "react-loader-spinner"
+import ModalExercicio from "../modalexercicios/ModalExercicio"
 
 function ListarExercicios() {
     const [exercicios, setExercicios] = useState<Exercicio[]>([])
@@ -25,13 +28,14 @@ function ListarExercicios() {
     return (
         <>
             {isLoading && (
-                <PacmanLoader
+                <Oval
                     color="#0D9488"
-                    margin={0}
-                    size={80}
-                    speedMultiplier={2}
-                    aria-label="Pacman-loading"
-                    className="mx-auto my-8"
+                    height="80"
+                    width="80"
+                    visible={true}
+                    aria-label="oval-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
                 />
             )}
             <div className="flex justify-center w-full my-4">
@@ -52,6 +56,11 @@ function ListarExercicios() {
                     </div>
                 </div>
             </div>
+
+            <div className="flex justify-around ">
+                <ModalExercicio />
+            </div>
+
         </>
     )
 }

@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Exercicio from "../../models/Exercicio";
 import { RotatingLines } from "react-loader-spinner";
+import { deletar, listar } from "../../../services/Service";
 
 function DeletarExercicio() {
 

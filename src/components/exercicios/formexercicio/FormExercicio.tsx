@@ -2,6 +2,8 @@ import { ChangeEvent, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Categoria from "../../models/Categoria"
 import { RotatingLines } from "react-loader-spinner"
+import { atualizar, cadastrar, listar } from "../../../services/Service"
+import Exercicio from "../../models/Exercicio"
 
 function FormExercicio() {
     const navigate = useNavigate()
@@ -12,8 +14,9 @@ function FormExercicio() {
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
         nome: '',
+        exercicio: {} as Exercicio,
     })
-    const [produto, setExercicio] = useState<Exercicio>({} as Exercicio)
+    const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
     const { id } = useParams<{ id: string }>()
 
@@ -51,42 +54,23 @@ function FormExercicio() {
 
     useEffect(() => {
         setExercicio({
-            ...produto,
+            ...exercicio,
             categoria: categoria,
         })
     }, [categoria])
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
 
-        /**
-         * Através de uma Desestruturação, guardamos as propriedades type, value, name
-         * do input que disparou o evento change em constantes
-         */
         const { type, value, name } = e.target
 
-        /**
-         * Atribuímos o valor (value) do input na variável valor
-         */
         let valor: string | number = value
 
-        /**
-         * Checamos se o tipo do input é number ou range ou se ao converter o valor para 
-         * number ele não retorna NaN - Not a Number (não é um numero) e checamos se o 
-         * valor é diferente de vazio
-         * 
-         * Se as condições acimas forem satisfeitas, significa que temos um numero, logo 
-         * precisamos converter para um numero do tipo float, com 2 casas decimais, 
-         * porque o único campo do tipo number do fomulário é o preço.
-         */
         if (['number', 'range'].includes(type) || (!isNaN(Number(value)) && value !== '')) {
             valor = parseFloat(Number(value).toFixed(2))
         }
 
-        /**
-         * Na sequência, atualizamos o Estado Exercicio
-         */
         setExercicio({
-            ...produto,
+            ...exercicio,
             [name]: valor,
             categoria: categoria,
         })
@@ -102,7 +86,7 @@ function FormExercicio() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/exercicios`, produto, setExercicio)
+                await atualizar(`/exercicios`, exercicio, setExercicio)
 
                 alert('Exercicio atualizado com sucesso')
             } catch (error: any) {
@@ -110,7 +94,7 @@ function FormExercicio() {
             }
         } else {
             try {
-                await cadastrar(`/exercicios`, produto, setExercicio)
+                await cadastrar(`/exercicios`, exercicio, setExercicio)
 
                 alert('Exercicio cadastrado com sucesso')
             } catch (error: any) {
@@ -125,8 +109,8 @@ function FormExercicio() {
     const carregandoCategoria = categoria.nome === ''
 
     return (
-        <div className="container flex flex-col items-center mx-auto">
-            <h1 className="my-8 text-4xl text-center">
+        <div className="container flex flex-col items-center mx-auto" >
+            <h1 className="my-8 text-4xl text-center text-white">
                 {id !== undefined
                     ? 'Editar Exercicio'
                     : 'Cadastrar Exercicio'}
@@ -137,11 +121,11 @@ function FormExercicio() {
                 onSubmit={gerarNovoExercicio}
             >
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">
-                        Nome do Exercicio
+                    <label htmlFor="nome" className='text-white'>
+                        Nome do Exercicio 
                     </label>
                     <input
-                        value={produto.nome}
+                        value={exercicio.nome}
                         onChange={(
                             e: ChangeEvent<HTMLInputElement>
                         ) => atualizarEstado(e)}
@@ -149,60 +133,158 @@ function FormExercicio() {
                         placeholder="Insira aqui o nome do Exercicio"
                         name="nome"
                         required
-                        className="p-2 bg-white border-2 rounded border-slate-700"
+                        className="p-2 bg-white border-1 rounded border-slate-700"
                     />
                 </div>
 
-                {/* <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">
-                        Preço do Exercicio
-                    </label>
-
-                    <input
-                        value={produto.preco}
-                        onChange={(
-                            e: ChangeEvent<HTMLInputElement>
-                        ) => atualizarEstado(e)}
-                        type="number"
-                        step=".01"
-                        placeholder="Adicione aqui o preço do Exercicio"
-                        name="preco"
-                        required
-                        className="p-2 bg-white border-2 rounded border-slate-700"
-                    />
-                </div> */}
-
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">
-                        Foto do Exercicio
+                    <label htmlFor="descricao" className='text-white'>
+                        Descrição 
                     </label>
-
                     <input
-                        value={produto.foto}
+                        value={exercicio.descricao}
                         onChange={(
                             e: ChangeEvent<HTMLInputElement>
                         ) => atualizarEstado(e)}
                         type="text"
-                        placeholder="Adicione aqui a foto do Exercicio"
-                        name="foto"
+                        placeholder="Insira aqui a descrição do Exercicio"
+                        name="descricao"
                         required
-                        className="p-2 bg-white border-2 rounded border-slate-700"
+                        className="p-2 bg-white border-1 rounded border-slate-700"
                     />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <p>Categoria do Exercicio</p>
+                    <label htmlFor="tempo" className='text-white'>
+                        Tempo de Execução
+                    </label>
+                    <input
+                        value={exercicio.tempo}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui o tempo de duração do Exercicio"
+                        name="tempo"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="serie" className='text-white'>
+                        Séries
+                    </label>
+                    <input
+                        value={exercicio.serie}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui a série de Exercicios"
+                        name="serie"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="repeticoes" className='text-white'>
+                        Repetições
+                    </label>
+                    <input
+                        value={exercicio.repeticoes}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui as repetições do Exercicio"
+                        name="repeticoes"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="peso" className='text-white'>
+                        Peso
+                    </label>
+                    <input
+                        value={exercicio.peso}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui o peso médio para carga"
+                        name="peso"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="descanso" className='text-white'>
+                        Tempo de Descanso entre Séries
+                    </label>
+                    <input
+                        value={exercicio.descanso}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui o tempo de descanso"
+                        name="descanso"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="midia" className='text-white'>
+                        Foto ou vídeo de Instrução
+                    </label>
+                    <input
+                        value={exercicio.midia}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui uma foto ou video de referência"
+                        name="midia"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="data" className='text-white'>
+                        Data
+                    </label>
+                    <input
+                        value={exercicio.data}
+                        onChange={(
+                            e: ChangeEvent<HTMLInputElement>
+                        ) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui a data"
+                        name="data"
+                        required
+                        className="p-2 bg-white border-1 rounded border-slate-700"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <p className='text-white'>Categoria do Exercicio</p>
                     <select
                         name="categoria"
                         id="categoria"
-                        className="p-2 bg-white border-2 rounded border-slate-700"
+                        className="p-2 bg-white border-1 rounded border-slate-700"
                         onChange={(e) =>
                             buscarCategoriaPorId(
                                 e.currentTarget.value
                             )
                         }
                     >
-                        <option value="" selected disabled>
+                        <option value="" selected disabled >
                             Selecione uma Categoria
                         </option>
                         {categorias.map((categoria) => (
@@ -221,7 +303,7 @@ function FormExercicio() {
                 <button
                     type="submit"
                     disabled={carregandoCategoria}
-                    className="flex justify-center w-1/2 py-2 mx-auto font-bold text-white rounded disabled:bg-slate-200 bg-slate-400 hover:bg-slate-800"
+                    className="flex justify-center w-1/2 py-2 my-4 mx-auto font-bold text-white rounded bg-gray-500 hover:bg-lime-300 hover:text-gray-950 "
                 >
                     {isLoading ? (
                         <RotatingLines

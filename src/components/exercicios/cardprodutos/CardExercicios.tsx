@@ -1,5 +1,5 @@
 import { Pencil, Trash } from "@phosphor-icons/react"
-import { data, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Exercicio from "../../models/Exercicio"
 
 interface CardExercicioProps {
@@ -58,18 +58,13 @@ function CardExercicios({ exercicio }: CardExercicioProps) {
                         Midia: {exercicio.midia}
                     </p>
                     <p className="text-sm text-center ">
-                        Data: {exercicio.data}
+                    Data: {new Date(exercicio.data).toLocaleDateString()}
                     </p>
                     <p className="text-xl text-center font-bold">
                         Categoria: {exercicio.categoria?.nome}
                     </p>
 
-                    {/* <h3 className="text-xl font-bold text-center uppercase">
-                        {Intl.NumberFormat('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL',
-                        }).format(exercicio.tempo)}
-                    </h3> */}
+                    
                 </div>
             </div>
             <div className="flex items-center justify-center w-full text-slate-100 bg-indigo-800 py-1 gap-2">
