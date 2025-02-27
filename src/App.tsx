@@ -3,14 +3,16 @@ import './App.css'
 import DeletarCategoria from './components/categoria/deletarcategorias/DeletarCategoria'
 import FormCategoria from './components/categoria/formcategoria/FormCategoria'
 import ListarCategorias from './components/categoria/listarcategorias/ListarCategorias'
+import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 
 function App() {
   
   return (
     <>
            <BrowserRouter>
-        
-        <div className="flex flex-col min-h-screen bg-gray-200 ">
+           <Navbar />
+        <div className="flex flex-col min-h-screen bg-gray-200 bg-cover bg-center">
           <div className="flex-grow">
             <Routes>
             <Route path="/categorias" element={<ListarCategorias />} />
@@ -20,10 +22,10 @@ function App() {
             </Routes>
           </div>
         </div>
-        
+        <Footer />
       </BrowserRouter> 
-    </>
-  )
+      </>
+    );
 }
 
 export default App

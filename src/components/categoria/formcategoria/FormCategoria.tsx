@@ -75,28 +75,29 @@ function FormCategoria() {
   }
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto">
-      <h1 className="my-8 text-4xl text-center">
+    
+    <div className="container flex flex-col items-center justify-center mx-auto p-20 my-20 bg-black/90">
+      <h1 className="my-8 text-4xl text-center font-black  text-[#d8ff57]">
         {id === undefined ? "Cadastrar Categoria" : "Editar Categoria"}
       </h1>
-
+      
       <form className="flex flex-col w-1/2 gap-4"
         onSubmit={gerarNovaCategoria}
       >
         <div className="flex flex-col gap-2">
-          <label htmlFor="categoria">Categoria</label>
+          <label htmlFor="categoria"></label>
           <input
             type="text"
             placeholder="Categoria"
-            name="tipo"
-            className="p-2 border-2 rounded border-slate-700 bg-white"
+            name="nome"
+            className="p-2 border-2 rounded border-gray-400 bg-white"
             required
             value={categoria.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
         <button
-          className="flex justify-center w-1/2 py-2 mx-auto rounded text-slate-100 bg-slate-400 hover:bg-slate-800"
+          className="flex justify-center w-1/2 py-2 mx-auto rounded text-black bg-white hover:bg-[#d8ff57]"
           type="submit"
         >
           {isLoading ?
