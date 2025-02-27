@@ -57,7 +57,7 @@ function ListarExercicios() {
                 </div>
             </div>
 
-            <div className="flex justify-around ">
+            <div className="flex justify-around max-h-screen overflow-y-auto p-4">
                 <ModalExercicio />
             </div>
 

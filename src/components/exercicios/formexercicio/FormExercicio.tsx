@@ -20,6 +20,21 @@ function FormExercicio() {
 
     const { id } = useParams<{ id: string }>()
 
+    function formatarDataParaInput(dateString: string | number | Date) {
+
+        if (!dateString) return "";
+        const date = new Date(dateString);
+
+        if(isNaN(date.getTime())) return "";
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`; // formato compatível com input type="date"
+    }
+
+
+
     async function buscarExercicioPorId(id: string) {
         try {
             await listar(`/exercicios/${id}`, setExercicio)
@@ -122,7 +137,7 @@ function FormExercicio() {
             >
                 <div className="flex flex-col gap-2">
                     <label htmlFor="nome" className='text-white'>
-                        Nome do Exercicio 
+                        Nome do Exercicio
                     </label>
                     <input
                         value={exercicio.nome}
@@ -139,7 +154,7 @@ function FormExercicio() {
 
                 <div className="flex flex-col gap-2">
                     <label htmlFor="descricao" className='text-white'>
-                        Descrição 
+                        Descrição
                     </label>
                     <input
                         value={exercicio.descricao}
@@ -240,7 +255,7 @@ function FormExercicio() {
 
                 <div className="flex flex-col gap-2">
                     <label htmlFor="midia" className='text-white'>
-                        Foto ou vídeo de Instrução
+                        Foto ou vídeo de Referência
                     </label>
                     <input
                         value={exercicio.midia}
@@ -260,7 +275,7 @@ function FormExercicio() {
                         Data
                     </label>
                     <input
-                        value={exercicio.data}
+                        value={formatarDataParaInput(exercicio.data)}
                         onChange={(
                             e: ChangeEvent<HTMLInputElement>
                         ) => atualizarEstado(e)}

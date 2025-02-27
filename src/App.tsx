@@ -15,11 +15,6 @@ function App() {
               <Route path="/cadastrarexercicio" element={<FormExercicio />} />
               <Route path="/editarexercicio/:id" element={<FormExercicio />} />
               <Route path="/exercicios" element={<ListarExercicios />} />
-              {/* <Route path="/home" element={<Home />} />
-              <Route path="/categorias" element={<ListarExercicios />} />
-              <Route path="/cadastrarcategoria" element={<FormExercicio />} />
-              <Route path="/editarcategoria/:id" element={<FormExercicio />} />
-              <Route path="/deletarcategoria/:id" element={<DeletarExercicio />} /> */}
             </Routes>
           </div>
         </div>

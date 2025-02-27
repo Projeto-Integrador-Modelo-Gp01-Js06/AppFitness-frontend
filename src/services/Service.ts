@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseURL: "https://appfitness-ewkp.onrender.com/swagger"
+  baseURL: "https://appfitness-ewkp.onrender.com"
 })
 
 export const listar = async (url: string, setDados: Function) => {

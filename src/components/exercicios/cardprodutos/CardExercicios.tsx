@@ -67,7 +67,7 @@ function CardExercicios({ exercicio }: CardExercicioProps) {
                     
                 </div>
             </div>
-            <div className="flex items-center justify-center w-full text-slate-100 bg-indigo-800 py-1 gap-2">
+            <div className="flex items-center justify-center w-full text-gray-950 bg-lime-300 py-1 gap-2">
                 <Link to={`/editarexercicio/${exercicio.id}`}>
                         <Pencil size={36} className="#ffffff " />
                 </Link>
