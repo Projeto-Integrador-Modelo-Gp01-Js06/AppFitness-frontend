@@ -7,7 +7,7 @@ function Navbar() {
 	return (
 		<>
 		<div className="flex justify-center w-full py-4 text-white bg-black">
-  <div className="container flex items-center justify-between ms-8 text-xl">
+  <div className="container flex items-center justify-between ms-8 text-xl font-['Roboto_Condensed']">
     <div className="flex items-center gap-8 py-4 ps-8">
 	<Link to="" className="hover:underline hover:text-[#d8ff57] transition duration-300">
         Inicio
@@ -28,7 +28,7 @@ function Navbar() {
 							className="flex items-center justify-center w-full"
 						>
 							<input
-								className="w-6/12 px-3 py-2 bg-black rounded-full h-8 focus:outline-none border border-white"
+								className=" font-['Roboto_Condensed'] w-6/12 px-3 py-2 bg-black rounded-full h-8 focus:outline-none border border-white"
 								type="search"
 								placeholder="Pesquisar"
 								id="busca"

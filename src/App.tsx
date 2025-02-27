@@ -1,8 +1,11 @@
 
-import { BrowserRouter, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
+import Home from './pages/home/Home';
+import './index.css'; 
+
 
 function App() {
 
@@ -11,8 +14,9 @@ function App() {
       <BrowserRouter>
        <Navbar />
         <div>
-          <div className="min-h-[75vh]">
+          <div className="min-h-[80vh]">
           <Routes>
+          <Route path="/" element={<Home />} />
 
           </Routes>
           </div>
@@ -20,7 +24,7 @@ function App() {
         <Footer />
        </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
