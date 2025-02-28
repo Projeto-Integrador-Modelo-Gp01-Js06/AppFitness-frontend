@@ -271,23 +271,6 @@ function FormExercicio() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="data" className='text-white'>
-                        Data
-                    </label>
-                    <input
-                        value={formatarDataParaInput(exercicio.data)}
-                        onChange={(
-                            e: ChangeEvent<HTMLInputElement>
-                        ) => atualizarEstado(e)}
-                        type="text"
-                        placeholder="Insira aqui a data"
-                        name="data"
-                        required
-                        className="p-2 bg-white border-1 rounded border-slate-700"
-                    />
-                </div>
-
-                <div className="flex flex-col gap-2">
                     <p className='text-white'>Categoria do Exercicio</p>
                     <select
                         name="categoria"

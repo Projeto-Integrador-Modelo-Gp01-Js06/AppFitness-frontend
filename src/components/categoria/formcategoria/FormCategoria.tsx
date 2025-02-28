@@ -75,9 +75,10 @@ function FormCategoria() {
   }
 
   return (
-    
-    <div className="container flex flex-col items-center justify-center mx-auto p-20 my-20 bg-black/90">
-      <h1 className="my-8 text-4xl text-center font-black  text-[#d8ff57]">
+
+    <div className="min-h-[50vh] bg-black">
+    <div className="container flex flex-col items-center justify-center mx-auto py-30 bg-black/90">
+      <h1 className="my-8 text-4xl text-center font-black  text-lime-400">
         {id === undefined ? "Cadastrar Categoria" : "Editar Categoria"}
       </h1>
       
@@ -112,6 +113,7 @@ function FormCategoria() {
           }
         </button>
       </form>
+    </div>
     </div>
   );
 }
