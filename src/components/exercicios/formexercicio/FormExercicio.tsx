@@ -124,7 +124,7 @@ function FormExercicio() {
     const carregandoCategoria = categoria.nome === ''
 
     return (
-        <div className="container flex flex-col items-center mx-auto" >
+        <div className="container flex flex-col items-center mx-auto bg-gray-950" >
             <h1 className="my-8 text-4xl text-center text-white">
                 {id !== undefined
                     ? 'Editar Exercicio'
