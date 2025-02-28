@@ -1,4 +1,5 @@
 import { GithubLogo, LinkedinLogo } from "@phosphor-icons/react";
+import Carrossel from "../../components/carrossel/Carrossel";
 
 function Sobre() {
   const membros = [
@@ -14,7 +15,31 @@ function Sobre() {
 
   return (
 	<>
-		<div className="min-h-screen bg-lime-300 rounded-4xl flex flex-col items-center py-10">
+		<div className="min-h-screen bg-black rounded-4xl flex flex-col items-center py-10">
+			<h1 className="text-lime-300 text-3xl font-bold mb-6">SOBRE O FITJOURNEY</h1>
+
+			<div className="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto px-6">
+				{/* Texto */}
+				<div className="w-full md:w-1/2 text-center md:text-left">
+					<p className="text-lime-300 text-xl mb-6 font-semibold">
+					O FitJourney nasceu da nossa paixão por um estilo de vida saudável e do desejo de inspirar mais pessoas a cuidarem do corpo e da mente.
+					</p>
+					<p className="text-lime-300 text-xl mb-6 font-semibold">
+					Criamos este projeto para incentivar hábitos mais saudáveis por meio da informação, motivação e comunidade. Nosso objetivo é fornecer conteúdos, dicas e suporte para ajudar você na sua jornada rumo ao bem-estar.
+					</p>
+					<p className="text-lime-300 text-xl mb-6 font-semibold">
+					Junte-se a nós e descubra que viver de forma saudável pode ser leve, prazeroso e possível para todos.
+					</p>
+				</div>
+
+				{/* Imagem ao lado */}
+				<div className="w-full md:w-1/2 flex justify-center rounded-lg shadow-lg object-cover max-w-md">
+					<Carrossel />
+				</div>
+			</div>
+		</div>
+
+		<div className="min-h-screen bg-lime-300 rounded-4xl flex flex-col items-center py-10 mt-2">
 			<h1 className="text-black text-3xl font-bold mb-6">CONHEÇA A NOSSA EQUIPE!</h1>
 			<p className="text-black text-xl mb-10 text-center max-w-2xl font-normal">
 				Somos desenvolvedores apaixonados por tecnologia, inovação e qualidade. Juntos, transformamos desafios em soluções eficientes.
