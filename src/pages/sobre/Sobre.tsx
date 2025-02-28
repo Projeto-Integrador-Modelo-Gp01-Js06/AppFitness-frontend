@@ -16,7 +16,7 @@ function Sobre() {
   return (
 	<>
 		{/* SOBRE DO FITJOURNEY */}
-		<div className="min-h-screen bg-gradient-to-b from-gray-900 to-black rounded-4xl flex flex-col items-center py-16 px-6">
+		<div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col items-center py-16 px-6">
 			{/* Título */}
 			<h1 className="text-lime-300 text-4xl lg:text-5xl font-extrabold mb-10 text-center">
 				SOBRE O FITJOURNEY
@@ -49,7 +49,40 @@ function Sobre() {
 		</div>
 
 		{/* SOBRE DO FITJOURNEY */}
-		<div className="min-h-screen bg-gradient-to-b from-gray-900 to-black rounded-4xl flex flex-col items-center py-16 px-6">
+		<div className="min-h-screen bg-gradient-to-b from-gray-900 flex flex-col items-center py-16 px-6">
+			{/* Título */}
+			<h1 className="text-lime-300 text-4xl lg:text-5xl font-extrabold mb-10 text-center">
+				SOBRE O FITJOURNEY
+			</h1>
+
+			{/* Container principal */}
+			<div className="flex flex-col md:flex-row items-center justify-center max-w-5xl mx-auto gap-8">
+				{/* Texto */}
+				<div className="w-full md:w-1/2 text-center md:text-left">
+					<p className="text-black text-lg lg:text-xl mb-6 font-normal leading-relaxed">
+						O FitJourney nasceu da nossa paixão por um estilo de vida saudável e do desejo de inspirar mais pessoas a cuidarem do corpo e da mente.
+					</p>
+
+					<p className="text-black text-lg lg:text-xl mb-6 font-normal leading-relaxed">
+						Criamos este projeto para incentivar hábitos mais saudáveis por meio da informação, motivação e comunidade. Nosso objetivo é fornecer conteúdos, dicas e suporte para ajudar você na sua jornada rumo ao bem-estar.
+					</p>
+
+					<p className="text-black text-lg lg:text-xl font-normal leading-relaxed">
+						Junte-se a nós e descubra que viver de forma saudável pode ser leve, prazeroso e possível para todos.
+					</p>
+				</div>
+
+				{/* Imagem ao lado */}
+				<div className="w-full md:w-1/2 flex justify-center">
+					<div className="rounded-xl shadow-xl overflow-hidden max-w-md transform transition duration-500 hover:scale-105">
+						<Carrossel />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{/* SOBRE DO FITJOURNEY */}
+		<div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black flex flex-col items-center py-16 px-6">
 			{/* Título */}
 			<h1 className="bg-lime-300 text-black rounded-2xl p-3 text-4xl lg:text-5xl font-extrabold mb-10 text-center">
 				SOBRE O FITJOURNEY
@@ -83,7 +116,7 @@ function Sobre() {
 
 
 		{/* SOBRE A NOSSA EQUIPE */}
-		<div className="min-h-screen bg-lime-300 rounded-4xl flex flex-col items-center py-10 mt-2">
+		<div className="min-h-screen bg-lime-300 flex flex-col items-center py-10">
 			<h1 className="text-black text-4xl lg:text-5xl font-extrabold mb-10">
 				CONHEÇA A NOSSA EQUIPE!</h1>
 			<p className="text-black text-xl mb-10 text-center max-w-2xl font-normal">
