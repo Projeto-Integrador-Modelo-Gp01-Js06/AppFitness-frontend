@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes } from 'react-router-dom'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
@@ -14,20 +13,14 @@ function App() {
         <div>
           <div className="min-h-[75vh]">
           <Routes>
-
+          <Route path="/" element={<Sobre />} />
+          <Route path="/sobre" element={<Sobre />} />
           </Routes>
           </div>
         </div>
         <Footer />
        </BrowserRouter>
     </>
-  )
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Sobre />} />
-          <Route path="/sobre" element={<Sobre />} />
-        </Routes>
-      </BrowserRouter>
   );
 }
 
