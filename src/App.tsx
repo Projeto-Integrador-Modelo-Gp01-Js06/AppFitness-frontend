@@ -5,6 +5,8 @@ import FormCategoria from './components/categoria/formcategoria/FormCategoria'
 import ListarCategorias from './components/categoria/listarcategorias/ListarCategorias'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import ListarExercicios from './components/exercicios/listarexercicios/ListarExercicios'
+import FormExercicio from './components/exercicios/formexercicio/FormExercicio'
 
 function App() {
   
@@ -19,6 +21,9 @@ function App() {
               <Route path="/cadastrarcategoria" element={<FormCategoria />} />
               <Route path="/editarcategoria/:id" element={<FormCategoria />} />
               <Route path="/deletarcategoria/:id" element={<DeletarCategoria />} />
+              <Route path="/cadastrarexercicio" element={<FormExercicio />} />
+              <Route path="/editarexercicio/:id" element={<FormExercicio />} />
+              <Route path="/exercicios" element={<ListarExercicios />} />
             </Routes>
           </div>
         </div>
@@ -26,6 +31,9 @@ function App() {
       </BrowserRouter> 
       </>
     );
-}
+  }
 
-export default App
+
+
+  
+
